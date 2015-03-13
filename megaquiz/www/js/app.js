@@ -47,8 +47,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
-
-
+  
+  .state('tab.quiz-question', {
+    url: '/question',
+    views: {
+      'tab-quiz': {
+        templateUrl: 'templates/tab-quiz-question.html',
+        controller: 'QuizQuestionCtrl'
+      }
+    }
+  })
+  
   .state('tab.results', {
     url: '/results',
     views: {
