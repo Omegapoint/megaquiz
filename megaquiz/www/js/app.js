@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'Tabletop'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'Tabletop', 'ngResource'])
 
     .run(function($ionicPlatform) {
         $ionicPlatform.ready(function() {
@@ -25,7 +25,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
         var quizSpreadSheet = "1DTeGI9jOG9cGZ0fh42WYLcJ_AUOeLpqH3-5zD_BElEg";
         TabletopProvider.setTabletopOptions({
-            key: 'https://docs.google.com/spreadsheets/d/' + quizSpreadSheet + '/pubhtml'
+            //key: 'https://docs.google.com/spreadsheets/d/' + quizSpreadSheet + '/pubhtml'
+            key: 'http://quiz.favvis.se/feeds/worksheets/1DTeGI9jOG9cGZ0fh42WYLcJ_AUOeLpqH3-5zD_BElEg/public/basic?alt=json'
         });
 
         // Ionic uses AngularUI Router which uses the concept of states
@@ -38,14 +39,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             .state('tab', {
                 url: "/tab",
                 templateUrl: "templates/tabs.html",
-                resolve: {
-                    tabletopData: 'Tabletop'
-                },
-                controller: function($rootScope, $log, tabletopData) {
-                    $rootScope.tabletopData = tabletopData; // This will be a resolved promise!
+                controller: function ($rootScope, Quiz) {
+                    Quiz.loadData().$promise.then(function (response) {
+                       $rootScope.quizData = response;
+                    });
+
 
                 }
-
             })
 
             // Each tab has its own nav history stack:
