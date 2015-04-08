@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('app.controllers', [])
 
     .controller('QuizCtrl', function ($rootScope, $scope, Quiz, $state) {
         // TODO Write controller code for quiz controller

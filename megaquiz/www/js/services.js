@@ -1,6 +1,6 @@
-angular.module('starter.services', [])
+angular.module('app.services', [])
 
-    .factory('Quiz', function($rootScope, $resource) {
+    .factory('Quiz', function ($rootScope, $resource) {
         // Might use a resource here that returns a JSON array
 
         // TODO Implement as in https://docs.angularjs.org/tutorial/step_11
@@ -23,7 +23,7 @@ angular.module('starter.services', [])
 
             loadData: function () {
                 return $resource('http://quiz.favvis.se/data.json', {}, {
-                    query: { method: 'GET', params: {}, isArray: false }
+                    query: {method: 'GET', params: {}, isArray: false}
                 }).query();
             },
 
@@ -32,9 +32,9 @@ angular.module('starter.services', [])
             questions: function (quizName) {
                 var count;
                 angular.forEach(quizzes(), function (value, key) {
-                   if (value.title === quizName) {
-                       count = value.count;
-                   }
+                    if (value.title === quizName) {
+                        count = value.count;
+                    }
                 });
                 var quiz = $rootScope.quizData.quizes[quizName];
                 var questions = [];

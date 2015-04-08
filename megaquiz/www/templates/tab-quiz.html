@@ -1,8 +1,11 @@
 <ion-view view-title="Välj quiz">
     <ion-content class="padding">
-        <ion-list ng-repeat="quiz in quizList">
+        <ion-list ng-repeat="quiz in quizzes.index">
             <quiz-item quiz="quiz"></quiz-item>
         </ion-list>
+        <!--<ion-list ng-repeat="quiz in quizList">-->
+            <!--<quiz-item quiz="quiz"></quiz-item>-->
+        <!--</ion-list>-->
 
     </ion-content>
 </ion-view>
