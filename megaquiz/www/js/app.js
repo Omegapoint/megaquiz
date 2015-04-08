@@ -62,7 +62,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.services', 'Tabletop', '
                 url: '/quiz',
                 views: {
                     'tab-quiz': {
-                        templateUrl: 'templates/tab-quiz.html',
+                        templateUrl: 'js/quiz-list/tab-quiz.html',
                         controller: 'QuizCtrl'
                     }
                 }
@@ -72,7 +72,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.services', 'Tabletop', '
                 url: '/:id/question',
                 views: {
                     'tab-quiz': {
-                        templateUrl: 'templates/tab-quiz-question.html',
+                        templateUrl: 'js/quiz-question/tab-quiz-question.html',
                         controller: 'QuizQuestionCtrl'
                     }
                 }
@@ -82,7 +82,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.services', 'Tabletop', '
                 url: '/results',
                 views: {
                     'tab-results': {
-                        templateUrl: 'templates/tab-results.html',
+                        templateUrl: 'js/result/tab-results.html',
                         controller: 'ResultsCtrl'
                     }
                 }
