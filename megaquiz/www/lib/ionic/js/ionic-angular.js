@@ -9613,7 +9613,7 @@ IonicModule
  * ```html
  * <ion-header-bar align-title="left" class="bar-positive">
  *   <div class="buttons">
- *     <button class="button" ng-click="doSomething()">Left Button</button>
+ *     <button class="button" ng-click="goToQuestion()">Left Button</button>
  *   </div>
  *   <h1 class="title">Title!</h1>
  *   <div class="buttons">
@@ -9655,7 +9655,7 @@ IonicModule
  *     <button class="button">Left Button</button>
  *   </div>
  *   <h1 class="title">Title!</h1>
- *   <div class="buttons" ng-click="doSomething()">
+ *   <div class="buttons" ng-click="goToQuestion()">
  *     <button class="button">Right Button</button>
  *   </div>
  * </ion-footer-bar>
@@ -10816,7 +10816,7 @@ IonicModule
  * <ion-nav-view>
  *   <ion-view>
  *     <ion-nav-buttons side="primary">
- *       <button class="button" ng-click="doSomething()">
+ *       <button class="button" ng-click="goToQuestion()">
  *         I'm a button on the primary of the navbar!
  *       </button>
  *     </ion-nav-buttons>

@@ -1,0 +1,16 @@
+<ion-view view-title="Svara på frågan">
+    <ion-content class="padding">
+        <div>
+            {{model.questionLabel}}
+        </div>
+
+        <div>
+            {{model.question}}
+        </div>
+
+        <ul ng-repeat="answer in model.answers">
+            <li>{{answer}}</li>
+        </ul>
+
+    </ion-content>
+</ion-view>
