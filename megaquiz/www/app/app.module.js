@@ -87,6 +87,15 @@ angular
         }
       })
 
+      .state('tab.quiz-question-result', {
+        views: {
+          'tab-quiz': {
+            templateUrl: 'app/quiz-question/tab-quiz-result.html',
+            controller: 'QuizResultCtrl as vm'
+          }
+        }
+      })
+
       .state('tab.results', {
         url: '/results',
         views: {

@@ -4,7 +4,8 @@
 
         <div ng-if="vm.questionType === 'single'" class="list" ng-repeat="answer in vm.answers">
             <label class="item item-radio">
-                <input type="radio" name="group">
+                <input type="radio" name="group" ng-click="vm.radioClick($index)">
+
                 <div class="item-content">
                     {{answer.answer}}
                     <i class="radio-icon ion-checkmark"></i>
@@ -14,13 +15,15 @@
 
         <ul ng-if="vm.questionType !== 'single'" class="list" ng-repeat="answer in vm.answers">
 
-            <li class="item item-checkbox">
+            <li class="item item-checkbox" ng-click="vm.multipleToggle($index)">
                 <label class="checkbox">
                     <input type="checkbox">
                 </label>
                 {{answer.answer}}
             </li>
         </ul>
+
+        <a class="button icon-right ion-chevron-right button-calm" ng-click="vm.getNextQuestion()">Submit answer</a>
 
     </ion-content>
 </ion-view>
