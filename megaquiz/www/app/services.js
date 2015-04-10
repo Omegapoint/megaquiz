@@ -18,7 +18,8 @@
       return service;
 
       function quizzes() {
-        return $rootScope.quizData.index;
+        //return $rootScope.quizData.index;
+        return $rootScope.tabletopData[0].Quiz.elements;
       }
 
       function getQuestion(quiz, index) {
@@ -42,7 +43,8 @@
             count = value.count;
           }
         });
-        var quiz = $rootScope.quizData.quizes[quizName];
+        //var quiz = $rootScope.quizData.quizes[quizName];
+        var quiz = $rootScope.tabletopData[0][quizName];
         var questions = [];
         var indexes = [];
         while (count > 0) {

@@ -13,14 +13,15 @@
         restrict: 'EA',
         controller: 'QuizCtrl',
         template:
-          '<ion-item class="item-thumbnail-left" ng-click="goToQuestion(quiz.reference_gid)">' +
-            '<img ng-src="{{quiz.img}}" alt=""/>' +
+          '<ion-item class="item-thumbnail-left" ng-click="goToQuestion(quiz.title)">' +
+            '<img ng-if="quiz.image" ng-src="{{quiz.image}}" alt=""/>' +
+            '<img ng-if="!quiz.image" ng-src="http://placekitten.com/g/70/70" alt=""/>' +
             '<h2>{{quiz.title}}</h2>' +
             '<h4>Antal frågor: {{quiz.count}}</h4>' +
           '</ion-item>'
         ,
         link: function (scope, el, attrs) {
-          console.log(scope);
+          //console.log(scope);
         }
       };
 

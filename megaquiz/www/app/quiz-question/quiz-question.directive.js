@@ -12,6 +12,7 @@
 
     var directive = {
       restrict: 'EA',
+      templateUrl: 'app/quiz-question/tab-quiz-question.html',
       link: function (scope, el, attrs) {
 
       }

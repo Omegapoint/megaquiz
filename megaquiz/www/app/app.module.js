@@ -29,12 +29,16 @@ angular
     });
   })
 
-  .config(function ($stateProvider, $urlRouterProvider, TabletopProvider) {
+  .constant('SPREADSHEET', {
+    key: '1DTeGI9jOG9cGZ0fh42WYLcJ_AUOeLpqH3-5zD_BElEg'
+  })
 
-    var quizSpreadSheet = "1DTeGI9jOG9cGZ0fh42WYLcJ_AUOeLpqH3-5zD_BElEg";
+  .config(function ($stateProvider, $urlRouterProvider, TabletopProvider, SPREADSHEET) {
+
+    //var quizSpreadSheet = "1DTeGI9jOG9cGZ0fh42WYLcJ_AUOeLpqH3-5zD_BElEg";
     TabletopProvider.setTabletopOptions({
-      //key: 'https://docs.google.com/spreadsheets/d/' + quizSpreadSheet + '/pubhtml'
-      key: 'http://quiz.favvis.se/feeds/worksheets/1DTeGI9jOG9cGZ0fh42WYLcJ_AUOeLpqH3-5zD_BElEg/public/basic?alt=json'
+      key: 'https://docs.google.com/spreadsheets/d/' + SPREADSHEET.key + '/pubhtml'
+      //key: 'http://quiz.favvis.se/feeds/worksheets/1DTeGI9jOG9cGZ0fh42WYLcJ_AUOeLpqH3-5zD_BElEg/public/basic?alt=json'
     });
 
     // Ionic uses AngularUI Router which uses the concept of states
@@ -47,20 +51,19 @@ angular
       .state('tab', {
         url: "/tab",
         templateUrl: "templates/tabs.html",
-        controller: function ($rootScope, Quiz) {
-          //Quiz.loadData().$promise.then(function (response) {
-          //   $rootScope.quizData = response;
-          //});
-
-          //resolve: {
-          //    tabletopData: 'Tabletop'
-          //},
-          //controller: function ($rootScope, $log, tabletopData) {
-          //    $rootScope.tabletopData = tabletopData; // This will be a resolved promise!
-          //
-          //}
-
+        //controller: function ($rootScope, Quiz) {
+        //  //Quiz.loadData().$promise.then(function (response) {
+        //  //   $rootScope.quizData = response;
+        //  //});
+        //},
+        resolve: {
+          tabletopData: 'Tabletop'
+        },
+        controller: function ($rootScope, $log, tabletopData) {
+          $rootScope.tabletopData = tabletopData; // This will be a resolved promise!
+          console.log($rootScope.tabletopData);
         }
+
       })
 
       // Each tab has its own nav history stack:
@@ -69,13 +72,16 @@ angular
         views: {
           'tab-quiz': {
             templateUrl: 'app/quiz-list/tab-quiz.html',
-            controller: 'QuizCtrl'
+            controller: 'QuizCtrl as vm'
           }
         }
       })
 
       .state('tab.quiz-question', {
-        url: '/:id/question',
+        url: '/quiz/:title/question',
+        params: {
+          quizId: null
+        },
         views: {
           'tab-quiz': {
             templateUrl: 'app/quiz-question/tab-quiz-question.html',
