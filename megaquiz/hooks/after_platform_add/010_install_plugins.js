@@ -2,7 +2,7 @@
 
 /**
  * Install all plugins listed in package.json
- * https://raw.githubusercontent.com/diegonetto/generator-ionic/master/templates/hooks/after_platform_add/install_plugins.js
+ * https://raw.githubusercontent.com/diegonetto/generator-ionic/master/templates/hooks/after_platform_add/install_plugins.app
  */
 var exec = require('child_process').exec;
 var path = require('path');

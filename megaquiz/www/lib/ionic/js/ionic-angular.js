@@ -14,7 +14,7 @@
 
 (function() {
 /*
- * deprecated.js
+ * deprecated.app
  * https://github.com/wearefractal/deprecated/
  * Copyright (c) 2014 Fractal <contact@wearefractal.com>
  * License MIT
@@ -83,7 +83,7 @@ var IonicModule = angular.module('ionic', ['ngAnimate', 'ngSanitize', 'ui.router
  * @usage
  * To trigger an Action Sheet in your code, use the $ionicActionSheet service in your angular controllers:
  *
- * ```js
+ * ```app
  * angular.module('mySuperApp', ['ionic'])
  * .controller(function($scope, $ionicActionSheet, $timeout) {
  *
@@ -350,7 +350,7 @@ jqLite.prototype.removeClass = function(cssClasses) {
  *
  * @usage
  *
- * ```js
+ * ```app
  * function MyController($scope, $ionicBackdrop, $timeout) {
  *   //Show a backdrop for one second
  *   $scope.action = function() {
@@ -424,7 +424,7 @@ IonicModule
   var LOCAL_REGEXP = /^\s*([@=&])(\??)\s*(\w*)\s*$/;
   return function(scope, attrs, bindDefinition) {
     forEach(bindDefinition || {}, function (definition, scopeName) {
-      //Adapted from angular.js $compile
+      //Adapted from angular.app $compile
       var match = definition.match(LOCAL_REGEXP) || [],
         attrName = match[3] || scopeName,
         mode = match[1], // @, =, or &
@@ -1278,7 +1278,7 @@ function($rootScope, $state, $location, $window, $timeout, $ionicViewSwitcher, $
      * * `disableBack`: The next view should forget its back view, and set it to null.
      * * `historyRoot`: The next view should become the root view in its history stack.
      *
-     * ```js
+     * ```app
      * $ionicHistory.nextViewOptions({
      *   disableAnimate: true,
      *   disableBack: true
@@ -1459,19 +1459,19 @@ function($rootScope, $state, $location, $document, $ionicPlatform, $ionicHistory
  * level so all platforms follow the same setting, rather than its platform config.
  * The following code would set the same config variable for all platforms:
  *
- * ```js
+ * ```app
  * $ionicConfigProvider.views.maxCache(10);
  * ```
  *
  * Additionally, each platform can have it's own config within the `$ionicConfigProvider.platform`
  * property. The config below would only apply to Android devices.
  *
- * ```js
+ * ```app
  * $ionicConfigProvider.platform.android.views.maxCache(5);
  * ```
  *
  * @usage
- * ```js
+ * ```app
  * var myApp = angular.module('reallyCoolApp', ['ionic']);
  *
  * myApp.config(function($ionicConfigProvider) {
@@ -2067,7 +2067,7 @@ var LOADING_SET_DEPRECATED = '$ionicLoading instance.setContent() has been depre
  * interaction.
  *
  * @usage
- * ```js
+ * ```app
  * angular.module('LoadingApp', ['ionic'])
  * .controller('LoadingCtrl', function($scope, $ionicLoading) {
  *   $scope.show = function() {
@@ -2089,7 +2089,7 @@ var LOADING_SET_DEPRECATED = '$ionicLoading instance.setContent() has been depre
  * Set the default options to be passed to the {@link ionic.service:$ionicLoading} service.
  *
  * @usage
- * ```js
+ * ```app
  * var app = angular.module('myApp', ['ionic'])
  * app.constant('$ionicLoadingConfig', {
  *   template: 'Default Loading Template...'
@@ -2314,7 +2314,7 @@ function($ionicLoadingConfig, $ionicBody, $ionicTemplateLoader, $ionicBackdrop, 
  *   </ion-modal-view>
  * </script>
  * ```
- * ```js
+ * ```app
  * angular.module('testApp', ['ionic'])
  * .controller('MyController', function($scope, $ionicModal) {
  *   $ionicModal.fromTemplateUrl('my-modal.html', {
@@ -2610,7 +2610,7 @@ function($rootScope, $ionicBody, $compile, $timeout, $ionicPlatform, $ionicTempl
  *   </ion-nav-bar>
  * </body>
  * ```
- * ```js
+ * ```app
  * function MyCtrl($scope, $ionicNavBarDelegate) {
  *   $scope.setNavTitle = function(title) {
  *     $ionicNavBarDelegate.title(title);
@@ -2871,7 +2871,7 @@ IonicModule
  *   </ion-popover-view>
  * </script>
  * ```
- * ```js
+ * ```app
  * angular.module('testApp', ['ionic'])
  * .controller('MyController', function($scope, $ionicPopover) {
  *
@@ -3097,7 +3097,7 @@ var POPUP_TPL =
  * @usage
  * A few basic examples, see below for details about all of the options available.
  *
- * ```js
+ * ```app
  *angular.module('mySuperApp', ['ionic'])
  *.controller('PopupCtrl',function($scope, $ionicPopup, $timeout) {
  *
@@ -3558,7 +3558,7 @@ function($ionicTemplateLoader, $ionicBackdrop, $q, $timeout, $rootScope, $ionicB
  * It is meant to be used where we need to absolute-position DOM elements in
  * relation to other, existing elements (this is the case for tooltips, popovers, etc.).
  *
- * Adapted from [AngularUI Bootstrap](https://github.com/angular-ui/bootstrap/blob/master/src/position/position.js),
+ * Adapted from [AngularUI Bootstrap](https://github.com/angular-ui/bootstrap/blob/master/src/position/position.app),
  * ([license](https://github.com/angular-ui/bootstrap/blob/master/LICENSE))
  */
 IonicModule
@@ -3667,7 +3667,7 @@ IonicModule
  *   </ion-content>
  * </body>
  * ```
- * ```js
+ * ```app
  * function MainCtrl($scope, $ionicScrollDelegate) {
  *   $scope.scrollTop = function() {
  *     $ionicScrollDelegate.scrollTop();
@@ -3692,7 +3692,7 @@ IonicModule
  *   </ion-content>
  * </body>
  * ```
- * ```js
+ * ```app
  * function MainCtrl($scope, $ionicScrollDelegate) {
  *   $scope.scrollMainToTop = function() {
  *     $ionicScrollDelegate.$getByHandle('mainScroll').scrollTop();
@@ -3838,7 +3838,7 @@ IonicModule
  *   </ion-side-menus>
  * </body>
  * ```
- * ```js
+ * ```app
  * function MainCtrl($scope, $ionicSideMenuDelegate) {
  *   $scope.toggleLeftSideMenu = function() {
  *     $ionicSideMenuDelegate.toggleLeft();
@@ -3952,7 +3952,7 @@ IonicModule
  *   </ion-slide-box>
  * </ion-view>
  * ```
- * ```js
+ * ```app
  * function MyCtrl($scope, $ionicSlideBoxDelegate) {
  *   $scope.nextSlide = function() {
  *     $ionicSlideBoxDelegate.next();
@@ -4066,7 +4066,7 @@ IonicModule
  *   </ion-tabs>
  * </body>
  * ```
- * ```js
+ * ```app
  * function MyCtrl($scope, $ionicTabsDelegate) {
  *   $scope.selectTabWithIndex = function(index) {
  *     $ionicTabsDelegate.select(index);
@@ -4115,14 +4115,14 @@ IonicModule
  * @usage
  * State templates are cached automatically, but you can optionally cache other templates.
  *
- * ```js
+ * ```app
  * $ionicTemplateCache('myNgIncludeTemplate.html');
  * ```
  *
  * Optionally disable all preemptive caching with the `$ionicConfigProvider` or individual states by setting `prefetchTemplate`
  * in the `$state` definition
  *
- * ```js
+ * ```app
  *   angular.module('myApp', ['ionic'])
  *   .config(function($stateProvider, $ionicConfigProvider) {
  *
@@ -5365,7 +5365,7 @@ IonicModule
  *   </ion-list>
  * </ion-content>
  * ```
- * ```js
+ * ```app
  * function MyCtrl($scope, $ionicListDelegate) {
  *   $scope.showDeleteButtons = function() {
  *     $ionicListDelegate.showDelete(true);
@@ -9796,7 +9796,7 @@ function headerFooterBarDirective(isHeader) {
  *   </ion-infinite-scroll>
  * </ion-content>
  * ```
- * ```js
+ * ```app
  * function MyController($scope, $http) {
  *   $scope.items = [];
  *   $scope.loadMore = function() {
@@ -10129,7 +10129,7 @@ var ITEM_TPL_REORDER_BUTTON =
 *   </ion-item>
 * </ion-list>
 * ```
-* ```js
+* ```app
 * function MyCtrl($scope) {
 *   $scope.items = [1, 2, 3, 4];
 *   $scope.moveItem = function(item, fromIndex, toIndex) {
@@ -10633,7 +10633,7 @@ IonicModule
  *   </ion-nav-back-button>
  * </ion-nav-bar>
  * ```
- * ```js
+ * ```app
  * function MyCtrl($scope, $ionicHistory) {
  *   $scope.myGoBack = function() {
  *     $ionicHistory.goBack();
@@ -11039,7 +11039,7 @@ IonicModule
  *
  * Next, we need to setup our states that will be rendered.
  *
- * ```js
+ * ```app
  * var app = angular.module('myApp', ['ionic']);
  * app.config(function($stateProvider) {
  *   $stateProvider
@@ -11098,7 +11098,7 @@ IonicModule
  * instance. Basically, any forward views are reset each time. This can be configured using the
  * {@link ionic.provider:$ionicConfigProvider}:
  *
- * ```js
+ * ```app
  * $ionicConfigProvider.views.forwardCache(true);
  * ```
  *
@@ -11107,13 +11107,13 @@ IonicModule
  * The {@link ionic.provider:$ionicConfigProvider} can be used to set the maximum allowable views
  * which can be cached, but this can also be use to disable all caching by setting it to 0.
  *
- * ```js
+ * ```app
  * $ionicConfigProvider.views.maxCache(0);
  * ```
  *
  * #### Disable cache within state provider
  *
- * ```js
+ * ```app
  * $stateProvider.state('myState', {
  *    cache: false,
  *    url : '/myUrl',
@@ -11401,7 +11401,7 @@ IonicModule
  *   </ion-list>
  * </ion-content>
  * ```
- * ```js
+ * ```app
  * angular.module('testApp', ['ionic'])
  * .controller('MyController', function($scope, $http) {
  *   $scope.items = [1,2,3];
@@ -11934,7 +11934,7 @@ IonicModule
  *   </ion-side-menu>
  * </ion-side-menus>
  * ```
- * ```js
+ * ```app
  * function ContentController($scope, $ionicSideMenuDelegate) {
  *   $scope.toggleLeft = function() {
  *     $ionicSideMenuDelegate.toggleLeft();
@@ -12238,7 +12238,7 @@ function($timeout, $compile, $ionicSlideBoxDelegate, $ionicHistory) {
  *   stop-color: #fff; }
  * </style>
  *
- * <script src="http://code.ionicframework.com/nightly/js/ionic.bundle.min.js"></script>
+ * <script src="http://code.ionicframework.com/nightly/app/ionic.bundle.min.app"></script>
  * <table class="table spinner-table" ng-app="ionic">
  *  <tr>
  *    <th>
