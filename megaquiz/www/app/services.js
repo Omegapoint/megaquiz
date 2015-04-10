@@ -59,29 +59,69 @@
         return questions;
       }
 
-      function getAnswersForQuestion(question) {
-        var count = question.count;
+      function getSplicedAnswersFromQuestionAndShuffle(question) {
         var answers = [];
-        var indexes = [];
-        var gotOneCorrect = false;
-        while (count > 0) {
-          var index = Math.floor(Math.random() * question.answers.length);
-          if (indexes.indexOf(index) === -1) {
-            var answer = getAnswer(question.answers, index);
-            if (gotOneCorrect) {
-              answers.push(answer);
-              indexes.push(index);
-              count--;
-            } else if (answer.correct) {
-              gotOneCorrect = true;
-              answers.push(answer);
-              indexes.push(index);
-              count--;
-            }
+        Object.keys(question).forEach(function (key, index) {
+          if (key.match(/^answer/) && question[key] !== '') {
+            var answer = question[key].split(':', 2);
+            answers.push({
+              correct: answer[0] === "true",
+              answer: answer[1]
+            });
+          }
+        });
 
+        return _.shuffle(answers);
+      }
+
+      function getFirstCorrectAnswerIndex(question) {
+        for (var i = 0; i < question.length; i++) {
+          if (question[i].correct === true) {
+            return i;
           }
         }
-        return answers;
+      }
+
+      function getAnswersForQuestion(question) {
+        var count = question.count;
+        var id = question.id;
+        var title = question.question;
+        var type = question.type;
+
+        var possibleAnswers = getSplicedAnswersFromQuestionAndShuffle(question);
+        var firstCorrectAnswerIndex = getFirstCorrectAnswerIndex(possibleAnswers);
+        var answers = [];
+        answers.push(possibleAnswers[firstCorrectAnswerIndex]);
+
+        possibleAnswers.splice(firstCorrectAnswerIndex, 1);
+
+        for (var i = 1; i < count; i++) {
+          answers.push(possibleAnswers[i-1]);
+        }
+
+        return _.shuffle(answers);
+
+        //var indexes = [];
+        //var gotOneCorrect = false;
+        //while (count > 0) {
+        //  var index = Math.floor(Math.random() * possibleAnswers.length);
+        //  if (indexes.indexOf(index) === -1) {
+        //    var answer = getAnswer(possibleAnswers, index);
+        //    if (gotOneCorrect) {
+        //      answers.push(answer);
+        //      indexes.push(index);
+        //      count--;
+        //    } else if (answer.correct) {
+        //      gotOneCorrect = true;
+        //      answers.push(answer);
+        //      indexes.push(index);
+        //    }
+        //
+        //    count--;
+        //  }
+        //}
+        //console.log(answers);
+        //return answers;
       }
 
     });

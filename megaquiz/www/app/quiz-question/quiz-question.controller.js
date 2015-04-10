@@ -10,14 +10,19 @@
       console.log($stateParams);
 
       var vm = this;
+      vm.currentQuestionIndex = -1;
 
-      vm.questions = Quiz.questions($stateParams.title);
-      console.log(vm.questions);
-      //Randomizer.getQuestion(id).then(function(questions) {
-      //
-      //});
+      var questions = Quiz.questions($stateParams.title);
+      console.log(questions);
 
-      // TODO Write controller code for quiz questions controller
+      vm.getNextQuestion = function() {
+        vm.currentQuestionIndex++;
+        vm.title = questions[vm.currentQuestionIndex].question;
+        vm.answers = Quiz.getAnswersForQuestion(questions[vm.currentQuestionIndex]);
+        vm.questionType = questions[vm.currentQuestionIndex].type;
+      }
+
+      vm.getNextQuestion();
 
     });
 

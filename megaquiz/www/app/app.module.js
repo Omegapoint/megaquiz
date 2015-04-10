@@ -12,7 +12,7 @@ angular
     'app.core',
     'app.services',
     'ngResource',
-    'Tabletop'
+    'Tabletop',
   ])
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
@@ -79,13 +79,10 @@ angular
 
       .state('tab.quiz-question', {
         url: '/quiz/:title/question',
-        params: {
-          quizId: null
-        },
         views: {
           'tab-quiz': {
             templateUrl: 'app/quiz-question/tab-quiz-question.html',
-            controller: 'QuizQuestionCtrl'
+            controller: 'QuizQuestionCtrl as vm'
           }
         }
       })

@@ -1,5 +1,26 @@
 <ion-view view-title="Svara på frågan">
     <ion-content class="padding">
+        <h2>{{vm.title}}</h2>
+
+        <div ng-if="vm.questionType === 'single'" class="list" ng-repeat="answer in vm.answers">
+            <label class="item item-radio">
+                <input type="radio" name="group">
+                <div class="item-content">
+                    {{answer.answer}}
+                    <i class="radio-icon ion-checkmark"></i>
+                </div>
+            </label>
+        </div>
+
+        <ul ng-if="vm.questionType !== 'single'" class="list" ng-repeat="answer in vm.answers">
+
+            <li class="item item-checkbox">
+                <label class="checkbox">
+                    <input type="checkbox">
+                </label>
+                {{answer.answer}}
+            </li>
+        </ul>
 
     </ion-content>
 </ion-view>
