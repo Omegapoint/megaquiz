@@ -14,6 +14,7 @@
       var submittedAnswers = [];
 
       var currentAnswer = [];
+      var questionAnswers = [];
 
       var questions = Quiz.questions($stateParams.title);
       console.log(questions);
@@ -36,22 +37,24 @@
       vm.getNextQuestion = function () {
         vm.currentQuestionIndex++;
         console.log(vm.currentQuestionIndex, (questions.length))
-        if (vm.currentQuestionIndex >= (questions.length)) {
-          $state.go('tab.quiz-question-result', {
-            submittedAnswers: submittedAnswers,
-            questions: questions
-          });
-          return;
-        }
-
         if (0 < vm.currentQuestionIndex) {
           submittedAnswers.push(currentAnswer);
           console.log(submittedAnswers);
+        }
+
+        if (vm.currentQuestionIndex >= (questions.length)) {
+          $state.go('tab.quiz-question-result', {
+            submittedAnswers: submittedAnswers,
+            questions: questions,
+            questionAnswers: questionAnswers
+          });
+          return;
         }
         currentAnswer = [];
         vm.title = questions[vm.currentQuestionIndex].question;
         vm.answers = Quiz.getAnswersForQuestion(questions[vm.currentQuestionIndex]);
         vm.questionType = questions[vm.currentQuestionIndex].type;
+        questionAnswers.push(vm.answers);
       };
 
       if (vm.currentQuestionIndex === -1) {

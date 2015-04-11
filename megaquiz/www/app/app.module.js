@@ -101,6 +101,11 @@ angular
       })
 
       .state('tab.quiz-question-result', {
+        params: {
+          'submittedAnswers': [], 
+          'questions': {},
+          'questionAnswers': []
+        },
         views: {
           'tab-quiz': {
             templateUrl: 'app/quiz-question/tab-quiz-result.html',
