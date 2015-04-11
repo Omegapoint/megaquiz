@@ -15,6 +15,7 @@ angular
     'Tabletop',
   ])
   .run(function ($ionicPlatform) {
+    console.log("run running");
     $ionicPlatform.ready(function () {
 
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -26,6 +27,9 @@ angular
         // org.apache.cordova.statusbar required
         StatusBar.styleDefault();
       }
+      //setTimeout(function() {
+      //  $cordovaSplashscreen.hide()
+      //}, 5000)
     });
   })
 
@@ -34,6 +38,7 @@ angular
   })
 
   .config(function ($stateProvider, $urlRouterProvider, TabletopProvider, SPREADSHEET) {
+    console.log("config running");
 
     //var quizSpreadSheet = "1DTeGI9jOG9cGZ0fh42WYLcJ_AUOeLpqH3-5zD_BElEg";
     TabletopProvider.setTabletopOptions({
@@ -57,7 +62,15 @@ angular
         //  //});
         //},
         resolve: {
-          tabletopData: 'Tabletop'
+          tabletopData: function($q) {
+            "use strict";
+            return TabletopProvider.$get($q).then(function (data) {
+              "use strict";
+              //$cordovaSplashscreen.hide()
+              return data; // This will be a resolved promise!
+            });
+          }
+          //tabletopData: 'Tabletop'
         },
         controller: function ($rootScope, $log, tabletopData) {
           $rootScope.tabletopData = tabletopData; // This will be a resolved promise!
